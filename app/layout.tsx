@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { AppProvider } from '@/context/app-context'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -9,7 +10,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: 'SIPETA TPK - Sistem Informasi Peta TPK',
-  description: 'Forestry Inventory Management System - Perhutani Cabak',
+  description: 'Sistem Informasi Peta TPK (Taman Produksi Kayu) dengan fitur GIS terintegrasi untuk manajemen persediaan kayu di Perhutani Cabak.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -36,9 +37,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body className={`font-sans antialiased`}>
-        {children}
+        <AppProvider>
+          {children}
+        </AppProvider>
         <Analytics />
       </body>
     </html>
